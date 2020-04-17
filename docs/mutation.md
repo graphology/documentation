@@ -26,7 +26,7 @@ const node = graph.addNode('John', {
 
 ## #.mergeNode
 
-Adds a node only if the edge does not exist in the graph yet. Else it will merge the provided attributes with the already existing ones.
+Adds a node only if the node does not exist in the graph yet. Else it will merge the provided attributes with the already existing ones.
 
 *Example*
 
