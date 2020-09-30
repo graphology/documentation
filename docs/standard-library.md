@@ -10,6 +10,7 @@
 * [graphology-hits](https://github.com/graphology/graphology-hits#readme)<br>*HITS algorithm.*
 * [graphology-layout](https://github.com/graphology/graphology-layout#readme)<br>*Basic graph layouts (random, circle etc.).*
 * [graphology-layout-forceatlas2](https://github.com/graphology/graphology-layout-forceatlas2#readme)<br>*ForceAtlas2 layout algorithm.*
+* [graphology-layout-noverlap](https://github.com/graphology/graphology-layout-noverlap#readme)<br>*Noverlap anti-collision layout algorithm.*
 * [graphology-metrics](https://github.com/graphology/graphology-metrics#readme)<br>*Modularity, density, centrality etc.*
 * [graphology-operators](https://github.com/graphology/graphology-operators#readme)<br>*Graph unary, binary & cast operators (reverse, union, intersection, conversion etc.)*
 * [graphology-pagerank](https://github.com/graphology/graphology-pagerank#readme)<br>*Pagerank algorithm.*
