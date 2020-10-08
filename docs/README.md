@@ -59,6 +59,9 @@ graph.forEachNode(node => {
 * [graphology-types](https://github.com/graphology/graphology-types#readme)<br>*TypeScript declaration files.*
 * [graphology-utils](https://github.com/graphology/graphology-utils#readme)<br>*Miscellaneous utils used by most of the other modules.*
 
+## Changelog
+
+A complete record describing changes from version to version can be found [here](https://github.com/graphology/graphology/blob/master/CHANGELOG.md) if required.
 
 ## Implementing graphology
 
