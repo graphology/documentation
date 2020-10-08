@@ -36,41 +36,10 @@ graph.size;
 >>> 1
 ```
 
-## #.directedSize
+*Variants*
 
-Number of directed edges in the graph.
-
-*Example*
-
-```js
-const graph = new Graph();
-
-graph.addNode('John');
-graph.addNode('Jack');
-
-graph.addDirectedEdge('John', 'Jack');
-
-graph.directedSize;
->>> 1
-```
-
-## #.undirectedSize
-
-Number of undirected edges in the graph.
-
-*Example*
-
-```js
-const graph = new Graph();
-
-graph.addNode('John');
-graph.addNode('Jack');
-
-graph.addUndirectedEdge('John', 'Jack');
-
-graph.undirectedSize;
->>> 1
-```
+* `#.directedSize`
+* `#.undirectedSize`
 
 ## #.type
 
@@ -117,6 +86,27 @@ const otherGraph = new Graph({allowSelfLoops: false});
 graph.allowSelfLoops;
 >>> false
 ```
+
+## #.selfLoopCount
+
+The total number of self loop included in the graph.
+
+```js
+const graph = new Graph();
+
+graph.selfLoopCount
+>>> 0
+
+graph.mergeEdge('John', 'John');
+
+graph.selfLoopCount
+>>> 1
+```
+
+*Variants*
+
+* `#.directedSelfLoopCount`
+* `#.undirectedSelfLoopCount`
 
 ## #.implementation
 
