@@ -40,6 +40,7 @@ graph.exportEdge('T->E');
 
 A graph is serialized as an object containing an `attributes`, a `nodes` & an `edges` key:
   * <span class="code">object</span> `attributes`: containing the attributes of the graph (can be omitted).
+  * <span class="code">object</span> `options`: containing the options of the graph (`allowSelfLoops`, `multi` and `type`).
   * <span class="code">object</span> `nodes`: containing a list of serialized nodes (can be omitted when merging).
   * <span class="code">object</span> `edges`: containing a list of serialized edges (can be omitted).
 
@@ -51,6 +52,11 @@ graph.export();
 >>> {
   attributes: {
     name: 'My Graph'
+  },
+  options: {
+    allowSelfLoops: true,
+    multi: false,
+    type: 'mixed'
   },
   nodes: [
     {key: 'Thomas'},
