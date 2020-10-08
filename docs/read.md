@@ -197,6 +197,23 @@ graph.extremities(edge);
 
 * **edge** <span class="code">any</span>: target edge.
 
+## #.hasExtremity
+
+Returns whether the given edge has the given node as extremity.
+
+```js
+graph.addNode('Lucy');
+graph.addNode('Timothy');
+graph.addNode('Clarice');
+const edge = graph.addEdge('Clarice', 'Timothy');
+
+graph.hasExtremity(edge, 'Timothy');
+>>> true
+
+graph.hasExtremity(edge, 'Lucy');
+>>> false
+```
+
 ## #.isDirected
 
 Returns whether the given edge is directed.

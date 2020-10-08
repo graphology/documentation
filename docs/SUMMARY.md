@@ -25,6 +25,7 @@
   * [#.target](read.md#target)
   * [#.opposite](read.md#opposite)
   * [#.extremities](read.md#extremities)
+  * [#.hasExtremity](read.md#hasExtremity)
   * [#.isDirected](read.md#isdirected)
   * [#.isSelfLoop](read.md#isselfloop)
 * [Mutation](mutation.md)
