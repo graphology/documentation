@@ -117,3 +117,17 @@ const otherGraph = new Graph({allowSelfLoops: false});
 graph.allowSelfLoops;
 >>> false
 ```
+
+## #.implementation
+
+A string containing the graph instance's implementation name.
+
+```js
+import Graph from 'graphology';
+
+const graph = new Graph();
+graph.implementation;
+>>> 'graphology'
+```
+
+It can be useful if you ever need to optimize libraries based upon the knowledge that the given instance is from a specific implementation.

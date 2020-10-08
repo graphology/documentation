@@ -15,6 +15,7 @@
   * [#.type](properties.md#type)
   * [#.multi](properties.md#multi)
   * [#.allowSelfLoops](properties.md#allowselfloops)
+  * [#.implementation](properties.md#implementation)
 * [Read](read.md)
   * [#.hasNode](read.md#hasnode)
   * [#.hasEdge](read.md#hasedge)
