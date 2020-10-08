@@ -197,7 +197,7 @@ graph.extremities(edge);
 
 * **edge** <span class="code">any</span>: target edge.
 
-## #.directed
+## #.isDirected
 
 Returns whether the given edge is directed.
 
@@ -209,9 +209,9 @@ graph.addNode('Clarice');
 const edge = graph.addEdge('Clarice', 'Timothy');
 const undirectedEdge = graph.addUndirectedEdge('Clarice', 'Timothy');
 
-graph.directed(edge);
+graph.isDirected(edge);
 >>> true
-graph.directed(undirectedEdge);
+graph.isDirected(undirectedEdge);
 >>> false
 ```
 
@@ -221,9 +221,9 @@ graph.directed(undirectedEdge);
 
 *Variants*
 
-`#.undirected`
+`#.isUndirected`
 
-## #.selfLoop
+## #.isSelfLoop
 
 Returns whether the given edge is a self-loop.
 
@@ -233,7 +233,7 @@ Returns whether the given edge is a self-loop.
 graph.addNode('Timothy');
 const edge = graph.addEdge('Timothy', 'Timothy');
 
-graph.selfLoop(edge);
+graph.isSelfLoop(edge);
 >>> true
 ```
 
