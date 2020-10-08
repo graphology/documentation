@@ -297,8 +297,6 @@ graph.mergeNodeAttributes('Martha', {age: 34, hair: 'brown'});
 * **node** <span class="code">any</span>: the node to update.
 * **data** <span class="code">object</span>: data to merge.
 
-**Performance tip**: while this method is convenient, you'll be faster by using the [`#.setNodeAttribute`](#setnodeattribute) method etc. in most cases and you'll enable renderers reacting to the graph's changes to act more efficiently, for instance.
-
 ## Edges
 
 ### #.getEdgeAttribute
@@ -541,5 +539,3 @@ graph.mergeEdgeAttributes('Martha', 'Jack', {type: 'LIKES', weight: 3}));
   * **source** <span class="code">any</span>: source of the edge.
   * **target** <span class="code">any</span>: target of the edge.
   * **data** <span class="code">object</span>: data to merge.
-
-**Performance tip**: while this method is convenient, you'll be faster by using the [`#.setEdgeAttribute`](#setedgeattribute) method etc. in most cases and you'll enable renderers reacting to the graph's changes to act more efficiently, for instance.
