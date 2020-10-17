@@ -93,7 +93,7 @@ The provided function takes a single object describing the created edge & having
 * **target** <span class="code">any</span>: the target of the edge.
 * **attributes** <span class="code">object</span>: optional attributes.
 
-*Example - Incremental id*
+*Example - Incremental key*
 
 ```js
 const generator = (function() {
@@ -110,7 +110,7 @@ graph.edges('John', 'Martha');
 >>> ['0']
 ```
 
-*Example - Id based on edge data*
+*Example - Key based on edge data*
 
 ```js
 const generator = function({undirected, source, target, attributes}) {
