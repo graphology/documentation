@@ -69,7 +69,7 @@ graph.dropNode('Thomas');
 
 *Payload*
 
-* **key** <span class="code">any</span>: the added node.
+* **key** <span class="code">any</span>: the dropped node's key.
 * **attributes** <span class="code">object</span>: the node's attributes.
 
 ## edgeDropped
@@ -91,9 +91,9 @@ graph.dropEdge('T->R');
 
 *Payload*
 
-* **edge** <span class="code">any</span>: the added edge.
-* **source** <span class="code">any</span>: the added edge's source.
-* **target** <span class="code">any</span>: the added edge's target.
+* **key** <span class="code">any</span>: the dropped edge's key.
+* **source** <span class="code">any</span>: the dropped edge's source.
+* **target** <span class="code">any</span>: the dropped edge's target.
 * **attributes** <span class="code">object</span>: the edge's attributes.
 * **undirected** <span class="code">boolean</span>: whether the edge is undirected.
 
