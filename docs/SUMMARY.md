@@ -113,6 +113,5 @@
   * [#.upgradeToMulti](utils.md#upgradetomulti)
 * [Known methods](knownmethods.md)
   * [#.toJSON](knownmethods.md#tojson)
-  * [#.toString](knownmethods.md#tostring)
   * [#.inspect](knownmethods.md#inspect)
 * [Running the unit tests](unittests.md)
