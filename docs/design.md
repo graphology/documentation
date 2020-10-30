@@ -1,4 +1,4 @@
-# Concepts
+# Design choices
 
 ## Keys
 
@@ -16,7 +16,7 @@ This said, the user should keep in mind that the graph have the same quirks as a
 
 ## Mixed graphs & type precedence
 
-In a mixed graph, one should consider that directed edges will always take precedence over the undirected ones.
+With `graphology`mixed graphs, one should consider that directed edges will always take precedence over the undirected ones.
 
 Use the typed methods to solve the ambiguity.
 

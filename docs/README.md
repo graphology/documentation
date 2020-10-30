@@ -13,12 +13,18 @@ Along with those specifications, one will also find a [standard library](#standa
 To install the reference implementation:
 
 ```bash
-npm install --save graphology
+npm install graphology
 ```
 
 The source of the reference implementation can be found on [this](https://github.com/graphology/graphology) github repository.
 
 Note that `graphology` also exposes type declaration so it can be comfortably used with [TypeScript](https://www.typescriptlang.org/).
+
+You may need to install `graphology-types` along `graphology`, depending on your npm version (it is declared as a peer dependency to avoid common synchronization issues), so it works smoothly:
+
+```bash
+npm install graphology-types
+```
 
 ## Quick Start
 

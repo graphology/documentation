@@ -32,6 +32,15 @@ graph.forEach(
   console.log(source, target);
 });
 
+// Using the breakable callback method
+graph.forEachUntil(
+  (source, target, sourceAttributes, targetAttributes, edge, edgeAttributes) => {
+  console.log(source, target);
+
+  if (sourceAttributes.count > 2)
+    return true;
+});
+
 // Using the iterator
 for (const [source, target, ...] of graph.adjacency())
   console.log(source, target);
@@ -44,6 +53,23 @@ for (const [source, target, ...] of graph)
 ### #.forEach
 
 Iterates over the graph's adjacency using a callback.
+
+**Arguments**
+
+* **callback** <span class="code">function</span>: callback to use.
+
+**Callback arguments**
+
+* **source** <span class="code">string</span>: source node's key.
+* **target** <span class="code">string</span>: target node's key.
+* **sourceAttributes** <span class="code">object</span>: source node's attributes.
+* **targetAttributes** <span class="code">object</span>: target node's attributes.
+* **edge** <span class="code">string</span>: edge's key.
+* **edgeAttributes** <span class="code">object</span>: edge's attributes.
+
+### #.forEachUntil
+
+Iterates over the graph's adjacency using a callback until it returns `true` to break iteration.
 
 **Arguments**
 
@@ -92,6 +118,14 @@ graph.forEachNode((node, attributes) => {
   console.log(node, attributes);
 });
 
+// Using the breakable callback method
+graph.forEachNodeUntil((node, attributes) => {
+  console.log(node, attributes);
+
+  if (attributes.count > 14)
+    return true;
+});
+
 // Using the iterator
 for (const [node, attributes] of graph.nodeEntries()) {
   console.log(node, attributes);
@@ -105,6 +139,19 @@ Returns an array of node keys.
 ### #.forEachNode
 
 Iterates over each node using a callback.
+
+**Arguments**
+
+* **callback** <span class="code">function</span>: callback to use.
+
+**Callback arguments**
+
+* **key** <span class="code">string</span>: the node's key.
+* **attributes** <span class="code">object</span>: the node's attributes.
+
+### #.forEachNodeUntil
+
+Iterates over each node using a callback until it returns `true` to break iteration.
 
 **Arguments**
 
@@ -154,7 +201,17 @@ graph.edges('John', 'Daniel');
 // Using the callback methods
 graph.forEachEdge(
   (edge, attributes, source, target, sourceAttributes, targetAttributes) => {
-    console.log(`Edge from ${source} to ${target}`);
+  console.log(`Edge from ${source} to ${target}`);
+});
+
+// Using the breakable callback methods
+graph.forEachEdgeUntil(
+  (edge, attributes, source, target, sourceAttributes, targetAttributes) => {
+
+  console.log(`Edge from ${source} to ${target}`);
+
+  if (source === 'John')
+    return true;
 });
 
 // And the counterparts
@@ -204,6 +261,42 @@ Iterates over relevant edges using a callback.
 #.forEachOutboundEdge (out + undirected)
 #.forEachDirectedEdge
 #.forEachUndirectedEdge
+```
+
+**Arguments**
+
+1. **Callback**: iterate over every edge.
+  * **callback** <span class="code">function</span>: callback to use.
+2. **Using a node's key**: will iterate over the node's relevant attached edges.
+  * **node** <span class="code">any</span>: the related node's key.
+  * **callback** <span class="code">function</span>: callback to use.
+3. **Using source & target**: will iterate over the relevant edges going from source to target.
+  * **source** <span class="code">any</span>: the source node's key.
+  * **target** <span class="code">any</span>: the target node's key.
+  * **callback** <span class="code">function</span>: callback to use.
+
+**Callback arguments**
+
+* **key** <span class="code">string</span>: the edge's key.
+* **attributes** <span class="code">object</span>: the edge's attributes.
+* **source** <span class="code">string</span>: key of the edge's source.
+* **target** <span class="code">string</span>: key of the edge's target.
+* **sourceAttributes** <span class="code">object</span>: attributes of the edge's source.
+* **targetAttributes** <span class="code">object</span>= attributes of the edge's target.
+
+### #.forEachEdgeUntil
+
+Iterates over relevant edges using a callback until it returns `true` to break iteration.
+
+**Counterparts**
+
+```
+#.forEachInEdgeUntil
+#.forEachOutEdgeUntil
+#.forEachInboundEdgeUntil (in + undirected)
+#.forEachOutboundEdgeUntil (out + undirected)
+#.forEachDirectedEdgeUntil
+#.forEachUndirectedEdgeUntil
 ```
 
 **Arguments**
@@ -290,6 +383,14 @@ graph.forEachNeighbor('Thomas', function(neighbor, attributes) {
   console.log(neighbor, attributes);
 });
 
+// Using the breakable callback methods
+graph.forEachNeighborUntil('Thomas', function(neighbor, attributes) {
+  console.log(neighbor, attributes);
+
+  if (neighbor.includes('o'))
+    return true;
+});
+
 // Using the iterators
 for (const [neighbor, attributes] of graph.neighborEntries()) {
   console.log(neighbor, attributes);
@@ -332,6 +433,31 @@ Iterates over the relevant neighbors using a callback.
 #.forEachOutboundNeighbor (out + undirected)
 #.forEachDirectedNeighbor
 #.forEachUndirectedNeighbor
+```
+
+**Arguments**
+
+* **node** <span class="code">any</span>: the node's key.
+* **callback** <span class="code">function</span>: callback to use.
+
+**Callback arguments**
+
+* **key** <span class="code">string</span>: the neighbor's key.
+* **attributes** <span class="code">object</span>: the neighbor's attributes.
+
+### #.forEachNeighborUntil
+
+Iterates over the relevant neighbors using a callback until it returns `true` to break iteration.
+
+**Counterparts**
+
+```
+#.forEachInNeighborUntil
+#.forEachOutNeighborUntil
+#.forEachInboundNeighborUntil (in + undirected)
+#.forEachOutboundNeighborUntil (out + undirected)
+#.forEachDirectedNeighborUntil
+#.forEachUndirectedNeighborUntil
 ```
 
 **Arguments**
