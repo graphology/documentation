@@ -16,21 +16,39 @@ The library basically proposes three ways to iterate:
 
 ## Adjacency
 
-Those methods iterate over the graph's adjacency, i.e. once per edge in the graph.
+Those methods iterate over the graph's adjacency, i.e. on each node's outbound adjacency (out + undirected) successively.
+
+Note that this mean you will thusly traverse each undirected edge twice. You can skip them once if you test that `source < target` for instance.
 
 **Examples**
 
 ```js
 const graph = new Graph();
 
-graph.mergeEdge('Thomas', 'Elizabeth');
-graph.mergeEdge('John', 'Thomas');
+graph.addNode('1');
+graph.addNode('2');
+graph.addNode('3');
+
+graph.addEdge('1', '2');
+graph.addEdge('2', '3');
+graph.addEdge('3', '1');
+graph.addUndirectedEdge('1', '2');
 
 // Using the callback method
+const adj = [];
 graph.forEach(
-  (source, target, sourceAttributes, targetAttributes, edge, edgeAttributes) => {
-  console.log(source, target);
+  (source, target, sourceAttributes, targetAttributes, edge, edgeAttributes, undirected) => {
+  adj.push([undirected, source, target])
 });
+
+adj
+>>> [
+  [false, '1', '2'],
+  [true, '1', '2'],
+  [false, '2', '3'],
+  [true, '2', '1'],
+  [false, '3', '1']
+]
 
 // Using the breakable callback method
 graph.forEachUntil(
@@ -66,6 +84,8 @@ Iterates over the graph's adjacency using a callback.
 * **targetAttributes** <span class="code">object</span>: target node's attributes.
 * **edge** <span class="code">string</span>: edge's key.
 * **edgeAttributes** <span class="code">object</span>: edge's attributes.
+* **undirected** <span class="code">boolean</span>: whether the edge is undirected.
+* **generatedKey** <span class="code">boolean</span>: whether the edge has a generated key.
 
 ### #.forEachUntil
 
@@ -83,6 +103,8 @@ Iterates over the graph's adjacency using a callback until it returns `true` to 
 * **targetAttributes** <span class="code">object</span>: target node's attributes.
 * **edge** <span class="code">string</span>: edge's key.
 * **edgeAttributes** <span class="code">object</span>: edge's attributes.
+* **undirected** <span class="code">boolean</span>: whether the edge is undirected.
+* **generatedKey** <span class="code">boolean</span>: whether the edge has a generated key.
 
 <h3 id="adjacency-iterator">#.adjacency</h3>
 
@@ -283,6 +305,8 @@ Iterates over relevant edges using a callback.
 * **target** <span class="code">string</span>: key of the edge's target.
 * **sourceAttributes** <span class="code">object</span>: attributes of the edge's source.
 * **targetAttributes** <span class="code">object</span>= attributes of the edge's target.
+* **undirected** <span class="code">boolean</span>: whether the edge is undirected.
+* **generatedKey** <span class="code">boolean</span>: whether the edge has a generated key.
 
 ### #.forEachEdgeUntil
 
@@ -319,6 +343,8 @@ Iterates over relevant edges using a callback until it returns `true` to break i
 * **target** <span class="code">string</span>: key of the edge's target.
 * **sourceAttributes** <span class="code">object</span>: attributes of the edge's source.
 * **targetAttributes** <span class="code">object</span>= attributes of the edge's target.
+* **undirected** <span class="code">boolean</span>: whether the edge is undirected.
+* **generatedKey** <span class="code">boolean</span>: whether the edge has a generated key.
 
 ### #.edgeEntries
 
