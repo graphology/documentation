@@ -297,6 +297,43 @@ graph.mergeNodeAttributes('Martha', {age: 34, hair: 'brown'});
 * **node** <span class="code">any</span>: the node to update.
 * **data** <span class="code">object</span>: data to merge.
 
+### #.updateEachNodeAttributes
+
+Update each node's attributes using the given function. This is usually the most performant function to update node attributes in batch.
+
+Note that you can optionally pass hints regarding the updated attribute names so that people listening to the emitted events can handle the situation more efficiently.
+
+*Example*
+
+```js
+graph.addNode('Martha', {age: 34});
+graph.addNode('Lara', {age: 78});
+
+graph.updateEachNodeAttributes((node, attr) => {
+  return {
+    ...attr,
+    age: attr.age + 1
+  };
+});
+
+graph.nodes().map(n => graph.getNodeAttribute(n, 'age'));
+>>> [35, 79]
+
+// Note that you can indicate hints
+graph.updateEachNodeAttributes((node, attr) => {
+  return {
+    ...attr,
+    age: attr.age + 1
+  };
+}, {attributes: ['age']}); // <-- here
+```
+
+*Arguments*
+
+* **updater** <span class="code">function</span>: the udpater function.
+* **hints** <span class="code">[object]</span>: optional hints to emit as part of the [eachNodeAttributesUpdated](events.md#eachnodeattributesupdated) event:
+  * **attributes** <span class="code">[array]</span>: an array of attribute names that will be updated by your action.
+
 ## Edges
 
 ### #.getEdgeAttribute
@@ -539,3 +576,40 @@ graph.mergeEdgeAttributes('Martha', 'Jack', {type: 'LIKES', weight: 3}));
   * **source** <span class="code">any</span>: source of the edge.
   * **target** <span class="code">any</span>: target of the edge.
   * **data** <span class="code">object</span>: data to merge.
+
+### #.updateEachEdgeAttributes
+
+Update each edge's attributes using the given function. This is usually the most performant function to update edge attributes in batch.
+
+Note that you can optionally pass hints regarding the updated attribute names so that people listening to the emitted events can handle the situation more efficiently.
+
+*Example*
+
+```js
+graph.mergeEdge('Martha', 'John', {weight: 12});
+graph.mergeEdge('Lucy', 'Martin', {weight: 4})
+
+graph.updateEachEdgeAttributes((node, attr) => {
+  return {
+    ...attr,
+    weight: attr.weight * 2
+  };
+});
+
+graph.edges().map(e => graph.getEdgeAttribute(e, 'weight'));
+>>> [24, 8]
+
+// Note that you can indicate hints
+graph.updateEachEdgeAttributes((node, attr) => {
+  return {
+    ...attr,
+    weight: attr.weight * 2
+  };
+}, {attributes: ['weight']}); // <-- here
+```
+
+*Arguments*
+
+* **updater** <span class="code">function</span>: the udpater function.
+* **hints** <span class="code">[object]</span>: optional hints to emit as part of the [eachEdgeAttributesUpdated](events.md#eachedgeattributesupdated) event:
+  * **attributes** <span class="code">[array]</span>: an array of attribute names that will be updated by your action.

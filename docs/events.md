@@ -18,7 +18,7 @@ graph.on('nodeAdded', function({key}) {
 })
 
 graph.addNode('Thomas');
-// Will trigger:
+// Will print:
 >>> 'Thomas'
 ```
 
@@ -39,7 +39,7 @@ graph.on('edgeAdded', function({key, source, target}) {
 })
 
 graph.addEdgeWithKey('T->R', 'Thomas', 'Richard');
-// Will trigger:
+// Will print:
 >>> 'T->R', 'Thomas', 'Richard'
 ```
 
@@ -63,7 +63,7 @@ graph.on('nodeDropped', function({key}) {
 })
 
 graph.dropNode('Thomas');
-// Will trigger:
+// Will print:
 >>> 'Thomas'
 ```
 
@@ -85,7 +85,7 @@ graph.on('edgeDropped', function({key, source, target}) {
 
 graph.addEdgeWithKey('T->R', 'Thomas', 'Richard');
 graph.dropEdge('T->R');
-// Will trigger:
+// Will print:
 >>> 'T->R', 'Thomas', 'Richard'
 ```
 
@@ -109,7 +109,7 @@ graph.on('cleared', function() {
 });
 
 graph.clear();
-// Will trigger:
+// Will print:
 >>> 0, 0
 ```
 
@@ -125,7 +125,7 @@ graph.on('edgesCleared', function() {
 });
 
 graph.clearEdges();
-// Will trigger:
+// Will print:
 >>> 45, 0
 ```
 
@@ -136,29 +136,21 @@ Emitted whenever the attributes of the graph are updated.
 *Example*
 
 ```js
-graph.on('attributesUpdated', function({type, meta}) {
-  console.log(type, meta);
+graph.on('attributesUpdated', function({type}) {
+  console.log(type);
 });
 
 graph.setAttribute('name', 'My Beautiful Graph');
-// Will trigger:
-'name', 'set', {value: 'My Beautiful Graph'}
+// Will print:
+'set'
 ```
 
 *Payload*
 
 * **type** <span class="code">string</span>: type of the update, one of `set`, `remove`, `replace` or `merge`.
-* **meta** <span class="code">object</span>: additional information related to the update.
-  * `set`
-    * **name** <span class="code">string</span>: edited attribute's name.
-    * **value** <span class="code">string</span>: new value.
-  * `remove`
-    * **name** <span class="code">string</span>: removed attribute's name.
-  * `replace`
-    * **before** <span class="code">object</span>: precedent attributes.
-    * **after** <span class="code">object</span>: current attributes.
-  * `merge`
-    * **data** <span class="code">object</span>: Merged data.
+* **attributes** <span class="code">object</span>: the graph's attributes.
+* **name** <span class="code">[string]</span>: the name of the edited attributes if type is `set` or `remove`.
+* **data** <span class="code">[object]</span>: merged data in case the type is `merge`.
 
 ## nodeAttributesUpdated
 
@@ -167,30 +159,22 @@ Emitted whenever the attributes of the node are updated.
 *Example*
 
 ```js
-graph.on('nodeAttributesUpdated', function({key, type, meta}) {
-  console.log(key, type, meta);
+graph.on('nodeAttributesUpdated', function({key, type}) {
+  console.log(key, type);
 });
 
 graph.setNodeAttribute('Thomas', 'age', 54);
-// Will trigger:
-'Thomas', 'set', {key: 'age', value: 54}
+// Will print:
+'Thomas', 'set'
 ```
 
 *Payload*
 
-* **key** <span class="code">any</span>: the updated node.
 * **type** <span class="code">string</span>: type of the update, one of `set`, `remove`, `replace` or `merge`.
-* **meta** <span class="code">object</span>: additional information related to the update.
-  * `set`
-    * **name** <span class="code">string</span>: edited attribute's name.
-    * **value** <span class="code">string</span>: new value.
-  * `remove`
-    * **name** <span class="code">string</span>: removed attribute's name.
-  * `replace`
-    * **before** <span class="code">object</span>: precedent attributes.
-    * **after** <span class="code">object</span>: current attributes.
-  * `merge`
-    * **data** <span class="code">object</span>: Merged data.
+* **key** <span class="code">string</span>: the affected node's key.
+* **attributes** <span class="code">object</span>: the node's attributes.
+* **name** <span class="code">[string]</span>: the name of the edited attributes if type is `set` or `remove`.
+* **data** <span class="code">[object]</span>: merged data in case the type is `merge`.
 
 ## edgeAttributesUpdated
 
@@ -199,27 +183,37 @@ Emitted whenever the attributes of the edge are updated.
 *Example*
 
 ```js
-graph.on('edgeAttributesUpdated', function({key, type, meta}) {
-  console.log(key, type, meta);
+graph.on('edgeAttributesUpdated', function({key, type}) {
+  console.log(key, type);
 });
 
 graph.setEdgeAttribute('T->R', 'type', 'KNOWS');
-// Will trigger:
-'Thomas', 'set', {key: 'type', value: 'KNOWS'}
+// Will print:
+'Thomas', 'set'
 ```
 
 *Payload*
 
-* **key** <span class="code">any</span>: the updated edge.
 * **type** <span class="code">string</span>: type of the update, one of `set`, `remove`, `replace` or `merge`.
-* **meta** <span class="code">object</span>: additional information related to the update.
-  * `set`
-    * **name** <span class="code">string</span>: edited attribute's name.
-    * **value** <span class="code">string</span>: new value.
-  * `remove`
-    * **name** <span class="code">string</span>: removed attribute's name.
-  * `replace`
-    * **before** <span class="code">object</span>: precedent attributes.
-    * **after** <span class="code">object</span>: current attributes.
-  * `merge`
-    * **data** <span class="code">object</span>: Merged data.
+* **key** <span class="code">string</span>: the affected edge's key.
+* **attributes** <span class="code">object</span>: the edge's attributes.
+* **name** <span class="code">[string]</span>: the name of the edited attributes if type is `set` or `remove`.
+* **data** <span class="code">[object]</span>: merged data in case the type is `merge`.
+
+## eachNodeAttributesUpdated
+
+Emitted whenever the [#.updateEachNodeAttributes](attributes.md#updateeachnodeattributes) is called.
+
+*Payload*
+
+* **hints** <span class="code">[object]</span>: hints (only if they were provided by user, else `null`):
+  * **attributes** <span class="code">[array]</span>: the list of updated attribute names.
+
+## eachEdgeAttributesUpdated
+
+Emitted whenever the [#.updateEachEdgeAttributes](attributes.md#updateeachedgeattributes) is called.
+
+*Payload*
+
+* **hints** <span class="code">[object]</span>: hints (only if they were provided by user, else `null`):
+  * **attributes** <span class="code">[array]</span>: the list of updated attribute names.
