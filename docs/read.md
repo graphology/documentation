@@ -53,7 +53,8 @@ graph.hasEdge('Clarice', 'John');
 
 *Variants*
 
-`#.hasDirectedEdge`, `#.hasUndirectedEdge`
+* `#.hasDirectedEdge`
+* `#.hasUndirectedEdge`
 
 ## #.edge
 
@@ -83,7 +84,8 @@ graph.edge('Clarice', 'Olivia');
 
 *Variants*
 
-`#.directedEdge`, `#.undirectedEdge`
+* `#.directedEdge`
+* `#.undirectedEdge`
 
 ## #.degree
 
@@ -253,7 +255,7 @@ graph.isDirected(undirectedEdge);
 
 *Variants*
 
-`#.isUndirected`
+* `#.isUndirected`
 
 ## #.isSelfLoop
 
