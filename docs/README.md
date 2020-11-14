@@ -63,6 +63,7 @@ graph.forEachNode(node => {
 * [graphology-shortest-path](https://github.com/graphology/graphology-shortest-path#readme)<br>*Shortest path functions (Dijkstra, A&ast; etc.)*
 * [graphology-svg](https://github.com/graphology/graphology-svg#readme)<br>*SVG export for graphs.*
 * [graphology-types](https://github.com/graphology/graphology-types#readme)<br>*TypeScript declaration files.*
+* [graphology-traversal](https://github.com/graphology/graphology-traversal#readme)<br>*Traversal functions (DFS, BFS, etc.)*
 * [graphology-utils](https://github.com/graphology/graphology-utils#readme)<br>*Miscellaneous utils used by most of the other modules.*
 
 ## Changelog
