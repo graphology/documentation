@@ -14,6 +14,7 @@
 * [graphology-metrics](https://github.com/graphology/graphology-metrics#readme)<br>*Modularity, density, centrality etc.*
 * [graphology-operators](https://github.com/graphology/graphology-operators#readme)<br>*Graph unary, binary & cast operators (reverse, union, intersection, conversion etc.)*
 * [graphology-pagerank](https://github.com/graphology/graphology-pagerank#readme)<br>*Pagerank algorithm.*
+* [graphology-simple-path](https://github.com/graphology/graphology-simple-path#readme)<br>*Simple path related functions (e.g. all paths between source & target)*
 * [graphology-shortest-path](https://github.com/graphology/graphology-shortest-path#readme)<br>*Shortest path functions (Dijkstra, A&ast; etc.)*
 * [graphology-svg](https://github.com/graphology/graphology-svg#readme)<br>*SVG export for graphs.*
 * [graphology-types](https://github.com/graphology/graphology-types#readme)<br>*TypeScript declaration files.*
