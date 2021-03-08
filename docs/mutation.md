@@ -135,10 +135,10 @@ graph.addNode('John');
 graph.addNode('Jack');
 
 // Adding a simple edge between John & Jack:
-const edge = graph.addEdge('John->Jack', 'John', 'Jack');
+const edge = graph.addEdgeWithKey('John->Jack', 'John', 'Jack');
 
 // Adding an edge with attributes between John & Jack;
-const edge = graph.addEdge('John->Jack', 'John', 'Jack', {
+const edge = graph.addEdgeWithKey('John->Jack', 'John', 'Jack', {
   type: 'KNOWS',
   weight: 0
 });
